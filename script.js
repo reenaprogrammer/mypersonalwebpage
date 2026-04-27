@@ -1,22 +1,52 @@
 // 1. DATA: Our Book List
 const myBooks = [
-    { title: "The Hobbit", author: "J.R.R. Tolkien", genre: "Fantasy" },
-    { title: "Atomic Habits", author: "James Clear", genre: "Self-Help" },
-    { title: "The Alchemist", author: "Paulo Coelho", genre: "Fiction" }
+    { 
+        title: "Half Girlfriend", 
+        author: "Chetan Bhagat", 
+        genre: "Fiction", 
+        summary: "A beautiful story of a boy, who never let go of his love even though it broke him." 
+    },
+    { 
+        title: "Secret Wish list ", 
+        author: "Preeti Shenoy", 
+        genre: "Fiction", 
+        summary: "The book explores the constraints on women, the importance of friendship, and the courage to live on one's own terms.." 
+    },
+    { 
+        title: "The Silent Patient", 
+        author: "Alex Michaelides", 
+        genre: "Thriller", 
+        summary: "A shocking psychological thriller about a woman's act of violence against her husband." 
+    } 
 ];
 
 // 2. LOGIC: Display Books
 const container = document.getElementById('book-container');
-for (const book of myBooks) {
-    const bookDiv = document.createElement('div');
-    bookDiv.className = 'book-card';
-    bookDiv.innerHTML = `
-        <h3>${book.title}</h3>
-        <p>By: ${book.author}</p>
-        <span>${book.genre}</span>
+
+myBooks.forEach(book => {
+    const card = document.createElement('div');
+    card.className = 'book-card';
+    
+    card.innerHTML = `
+        <div class="book-inner">
+            <div class="book-front">
+                <h3>${book.title}</h3>
+                <p>${book.author}</p>
+                <small>${book.genre}</small>
+            </div>
+            <div class="book-back">
+                <p>${book.summary}</p>
+            </div>
+        </div>
     `;
-    container.appendChild(bookDiv);
-}
+
+    // Toggle the flip class on click
+    card.addEventListener('click', function() {
+        this.querySelector('.book-inner').classList.toggle('is-flipped');
+    });
+
+    container.appendChild(card);
+});
 
 // 3. LOGIC: Read More Button
 const storyBtn = document.getElementById('read-more-btn');
