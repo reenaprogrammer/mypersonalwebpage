@@ -49,21 +49,16 @@ myBooks.forEach(book => {
 });
 
 // 3. LOGIC: Read More Button
+// 1. Get the button reference
 const storyBtn = document.getElementById('read-more-btn');
-const extraText = document.getElementById('extra-story');
-const storyImg = document.getElementById('story-image');
 
-storyBtn.addEventListener('click', () => {
-    if (extraText.style.display === "none" || extraText.style.display === "") {
-        extraText.style.display = "block";
-        storyBtn.innerText = "Show Less";
-        storyImg.src = "https://picsum.photos/800/401"; 
-    } else {
-        extraText.style.display = "none";
-        storyBtn.innerText = "Read Full Story";
-        storyImg.src = "https://picsum.photos/800/400";
-    }
-});
+// 2. The new logic: Redirect instead of expanding
+if (storyBtn) { 
+    storyBtn.addEventListener('click', () => {
+        // This sends the user to the new page you created
+        window.location.href = "story-detail.html";
+    });
+}
 
 // 4. LOGIC: Theme Switcher
 const themeBtn = document.getElementById('theme-toggle');

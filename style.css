@@ -1,8 +1,8 @@
 /* Base Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: #c7acd9;
+    color: #0a3374;
     line-height: 1.6;
     padding: 20px;
     max-width: 900px;
@@ -13,8 +13,8 @@ body {
 header {
     text-align: center;
     padding: 40px 0;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
+    background: linear-gradient(135deg, #677dc5, #875eba);
+    color: rgb(187, 216, 223);
     border-radius: 15px;
     margin-bottom: 30px;
     position: relative;
@@ -42,7 +42,7 @@ header {
 }
 
 .book-card {
-    background: white;
+    background: rgb(211, 171, 171);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -54,7 +54,7 @@ header {
 
 /* Story Section */
 #story-nook {
-    background: white;
+    background: rgb(154, 158, 206);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -67,7 +67,7 @@ header {
 }
 
 #read-more-btn {
-    background-color: #6e8efb;
+    background-color: #0c937d;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -123,12 +123,35 @@ body.dark-theme {
 }
 
 .book-front {
-    background-color: white;
-    color: #333;
+    background-color: rgb(213, 154, 154);
+    color: #5b0303;
 }
 
 .book-back {
-    background-color: #6e8efb;
+    background-color: #62b1c1;
     color: white;
     transform: rotateY(180deg);
+}
+/* Styling for the new story container */
+.full-story-content {
+    background: rgb(211, 179, 224);
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Ensure it changes color in dark mode */
+.dark-theme .full-story-content {
+    background-color: #2d2d2d;
+    color: white;
+}
+
+/* Make the back link look like a clean button or bold text */
+.back-link {
+    color: #040a1e;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
 }
