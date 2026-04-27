@@ -60,7 +60,7 @@ if (container) {
                 <div class="book-front">
                     <h3>${book.title}</h3>
                     <p>${book.author}</p>
-                    <small>Click to Flip ✨</small>
+                    <small>>${book.genre}</small>
                 </div>
                 <div class="book-back">
                     <p>${book.summary}</p>
