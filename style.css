@@ -1,0 +1,87 @@
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Book Shelf Grid */
+#book-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.book-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 200px;
+    transition: transform 0.2s;
+}
+
+.book-card:hover { transform: translateY(-5px); }
+
+/* Story Section */
+#story-nook {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.story-image-container img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+#read-more-btn {
+    background-color: #6e8efb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Dark Mode Classes */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #f4f7f6;
+}
+
+.dark-theme .book-card, .dark-theme #story-nook {
+    background-color: #2d2d2d;
+    color: white;
+}
