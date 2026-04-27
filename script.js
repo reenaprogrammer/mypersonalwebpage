@@ -61,8 +61,29 @@ if (storyBtn) {
 }
 
 // 4. LOGIC: Theme Switcher
+
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+}
+
 const themeBtn = document.getElementById('theme-toggle');
-themeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    themeBtn.innerText = document.body.classList.contains('dark-theme') ? "Light Mode ☀️" : "Dark Mode 🌙";
-});
+
+if (themeBtn) {
+    // Update button text on load
+    themeBtn.innerText = document.body.classList.contains('dark-theme') ? "Switch Theme ☀️" : "Switch Theme 🌙";
+
+    // --- 2. Handle the click ---
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        
+        // Save the choice!
+        if (document.body.classList.contains('dark-theme')) {
+            localStorage.setItem('theme', 'dark');
+            themeBtn.innerText = "Switch Theme ☀️";
+        } else {
+            localStorage.setItem('theme', 'light');
+            themeBtn.innerText = "Switch Theme 🌙";
+        }
+    });
+}
