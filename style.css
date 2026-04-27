@@ -155,3 +155,8 @@ body.dark-theme {
     display: inline-block;
     margin-top: 20px;
 }
+.highlight {
+    color: var(--accent-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--accent-color);
+}

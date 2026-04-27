@@ -20,70 +20,69 @@ const myBooks = [
     } 
 ];
 
-// 2. LOGIC: Display Books
-const container = document.getElementById('book-container');
+// ==========================================
+// 2. THEME SWITCHER (Works on ALL Pages)
+// ==========================================
+const themeBtn = document.getElementById('theme-toggle');
 
-myBooks.forEach(book => {
-    const card = document.createElement('div');
-    card.className = 'book-card';
-    
-    card.innerHTML = `
-        <div class="book-inner">
-            <div class="book-front">
-                <h3>${book.title}</h3>
-                <p>${book.author}</p>
-                <small>${book.genre}</small>
-            </div>
-            <div class="book-back">
-                <p>${book.summary}</p>
-            </div>
-        </div>
-    `;
-
-    // Toggle the flip class on click
-    card.addEventListener('click', function() {
-        this.querySelector('.book-inner').classList.toggle('is-flipped');
-    });
-
-    container.appendChild(card);
-});
-
-// 3. LOGIC: Read More Button
-// 1. Get the button reference
-const storyBtn = document.getElementById('read-more-btn');
-
-// 2. The new logic: Redirect instead of expanding
-if (storyBtn) { 
-    storyBtn.addEventListener('click', () => {
-        // This sends the user to the new page you created
-        window.location.href = "story-detail.html";
-    });
-}
-
-// 4. LOGIC: Theme Switcher
-
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
+// Check browser memory on load to see if user previously chose Dark Mode
+if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-theme');
 }
 
-const themeBtn = document.getElementById('theme-toggle');
-
 if (themeBtn) {
-    // Update button text on load
+    // Set initial button text based on current mode
     themeBtn.innerText = document.body.classList.contains('dark-theme') ? "Switch Theme ☀️" : "Switch Theme 🌙";
 
-    // --- 2. Handle the click ---
     themeBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
         
-        // Save the choice!
-        if (document.body.classList.contains('dark-theme')) {
-            localStorage.setItem('theme', 'dark');
-            themeBtn.innerText = "Switch Theme ☀️";
-        } else {
-            localStorage.setItem('theme', 'light');
-            themeBtn.innerText = "Switch Theme 🌙";
-        }
+        // Save choice to localStorage so it stays dark when switching pages
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeBtn.innerText = isDark ? "Switch Theme ☀️" : "Switch Theme 🌙";
+    });
+}
+
+// ==========================================
+// 3. PAGE-SPECIFIC LOGIC (Safety Checks)
+// ==========================================
+
+// --- A. The Book Shelf (Only runs on Home Page) ---
+const container = document.getElementById('book-container');
+
+if (container) {
+    myBooks.forEach(book => {
+        const card = document.createElement('div');
+        card.className = 'book-card';
+        card.innerHTML = `
+            <div class="book-inner">
+                <div class="book-front">
+                    <h3>${book.title}</h3>
+                    <p>${book.author}</p>
+                    <small>Click to Flip ✨</small>
+                </div>
+                <div class="book-back">
+                    <p>${book.summary}</p>
+                </div>
+            </div>
+        `;
+        
+        // Add the click listener to flip the card
+        card.addEventListener('click', function() {
+            this.querySelector('.book-inner').classList.toggle('is-flipped');
+        });
+
+        container.appendChild(card);
+    });
+}
+
+// --- B. The Read More Button (Only runs on Home Page) ---
+const storyBtn = document.getElementById('read-more-btn');
+
+if (storyBtn) {
+    storyBtn.addEventListener('click', () => {
+        // Redirects user to the full story page
+        window.location.href = "story-detail.html";
     });
 }
